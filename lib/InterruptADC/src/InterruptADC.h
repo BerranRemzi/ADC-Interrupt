@@ -11,6 +11,15 @@
 #define TASK_ENTER(ID) digitalWrite((ID), HIGH)
 #define TASK_EXIT(ID) digitalWrite((ID), LOW)
 
+typedef struct 
+{
+    uint8_t analogPin;
+    uint8_t adc;
+    uint8_t ADCSRB_value;
+    uint8_t ADMUX_value;
+    uint16_t result;
+}InterruptADC_Channel_t;
+
 class InterruptADC_
 {
 public:
@@ -22,8 +31,7 @@ public:
     uint16_t analogRead(uint8_t pin);
 
 private:
-    uint8_t _map[16];
-    volatile uint16_t _result[16];      // result of ADC conversion
+    volatile InterruptADC_Channel_t _map[16];
     volatile uint8_t _channel = 0u; // current ADC channel
     uint8_t _channelCount = 0u;
 };
