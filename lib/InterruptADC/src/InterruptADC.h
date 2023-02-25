@@ -3,22 +3,30 @@
 
 #include "Arduino.h"
 
+#ifdef INTERRUPT_ADC_DEBUG
 #define digitalToggle(PIN) digitalWrite(PIN, !digitalRead((PIN)))
 
 #define ISR_ENTER(ID) digitalWrite((ID), HIGH)
 #define ISR_EXIT(ID) digitalWrite((ID), LOW)
-
 #define TASK_ENTER(ID) digitalWrite((ID), HIGH)
 #define TASK_EXIT(ID) digitalWrite((ID), LOW)
+#else
+#define digitalToggle(PIN)
 
-typedef struct 
+#define ISR_ENTER(ID)
+#define ISR_EXIT(ID)
+#define TASK_ENTER(ID)
+#define TASK_EXIT(ID)
+#endif /* INTERRUPT_ADC_DEBUG */
+
+typedef struct
 {
     uint8_t analogPin;
     uint8_t adc;
     uint8_t ADCSRB_value;
     uint8_t ADMUX_value;
     uint16_t result;
-}InterruptADC_Channel_t;
+} InterruptADC_Channel_t;
 
 class InterruptADC_
 {
