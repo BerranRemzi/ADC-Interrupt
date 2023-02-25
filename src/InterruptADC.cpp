@@ -9,7 +9,6 @@ extern uint8_t analog_reference;
 
 void InterruptADC_::initialize(void)
 {
-    // ADMUX = (1 << REFS0) | _map[_channel].;                                          // select reference voltage and ADC channel
     ADCSRA |= (1 << ADEN) | (1 << ADIE); // enable ADC and interrupt
 }
 

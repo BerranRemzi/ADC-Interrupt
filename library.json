@@ -1,0 +1,16 @@
+{
+    "name": "InterruptADC",
+    "version": "1.0.0",
+    "keywords": "analog",
+    "description": "Allows use of nonblocking-interrupt based ADC",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/BerranRemzi/InterruptADC.git"
+    },
+    "frameworks": "arduino",
+    "platforms":
+    [
+      "atmelavr"
+    ]
+  }
